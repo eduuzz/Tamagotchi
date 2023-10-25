@@ -1,0 +1,17 @@
+#Wed Oct 25 11:56:15 BRT 2023
+bluej.teamsettings.ignore1=.*\\.class
+bluej.teamsettings.yourName=Eduardo Proen\u00E7a
+bluej.teamsettings.git.server=github.com
+bluej.teamsettings.yourEmail=eproencad@gmail.com
+bluej.teamsettings.git.repositoryPrefix=/eduuzz/Tamagotchi.git
+bluej.teamsettings.vcs=git
+bluej.teamsettings.user=eduuzz
+bluej.teamsettings.ignore3=team\\.defs
+bluej.teamsettings.ignore2=bluej\\.pkh
+bluej.teamsettings.ignore5=.*\\~
+bluej.teamsettings.git.branch=
+bluej.teamsettings.ignore4=.*\\.ctxt
+bluej.teamsettings.ignore7=.*\\\#backup
+bluej.teamsettings.ignore6=.*\\\#
+bluej.teamsettings.git.protocol=https
+bluej.teamsettings.ignore8=\\.DS_Store
