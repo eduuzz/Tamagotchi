@@ -1,4 +1,5 @@
 package TAMAGOCHI;
+import java.util.Scanner;
 
 public class Tamagochi{
 
@@ -43,7 +44,13 @@ public class Tamagochi{
     }
 
     // fell hungry
-    public void fellHungry(){
+    public void fellHungry(){ // can eat a lot / eat a bit / dont eat
+        if(alive == true){ // verify if alive
+            while(getWeight() < 20){
+                
+            }
+        }
+
     }
 
     // felget bored
