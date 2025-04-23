@@ -28,7 +28,7 @@ public class Tamagochi{
     public void setName(String name){this.name = name;} // set the new name
 
     public int getAge(){return this.age;} // return the age
-    public void SetAge(int age){this.age = age;} 
+    public void setAge(int age){this.age = age;} 
 
     public int getWeight(){return this.weight;} // return the weight
     public void setWeight(int weight){this.weight = weight;}
@@ -42,6 +42,16 @@ public class Tamagochi{
     // WHISHES OF TAMAGOCHI
     // fell sleepy
     public void fellSleepy(){
+        
+        Scanner scanner = new Scanner(System.in);
+        
+        int stayedAwake = 0;
+    
+        int choiceSleep = scanner.nextInt();
+        System.out.println(choiceSleep);
+        
+
+        
     }
 
     // fell hungry
@@ -79,7 +89,9 @@ public class Tamagochi{
 
             default:
                 System.out.println("Please choose between the options 1 or 2."); // if not typed 1 or 2, return to ask 
-                
+                // verify how to return to ask 
+
+            scanner.close();
         }
             
     } 
