@@ -84,12 +84,30 @@ public class Tamagochi{
     // fell hungry
     public void fellHungry(){ // can eat a lot / eat a bit / dont eat
         
-        if(alive == true){ // verify if alive
-            while(getWeight() < 20){
-                
-            }
-        }
+        Scanner scanner = new Scanner(System.in);
+        int choiceHungry = scanner.nextInt();
+        
+        System.out.println("Your pet " +getName()+ " is hungry. Weight: " +getWeight()+ "Kg.");
+        System.out.println("Choose: \n1. Eat a lot\n2. Eat a bit\n3. Don't eat");
 
+        switch (choiceHungry) {
+            case 1: // eat a lot and sleep
+                this.weight = this.weight + 5;
+                System.out.println(this.getName() + " ate and went sleep");
+                this.fellSleepy();
+                break;
+        
+            case 2: // eat a bit
+                this.weight++;
+                break;
+
+            case 3: // don't eat
+                this.weight = this.weight - 2;
+                break;
+            
+            default:
+                break;
+        }
     }
 
     // felget bored
