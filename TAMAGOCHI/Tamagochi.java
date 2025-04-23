@@ -9,7 +9,8 @@ public class Tamagochi{
     private int age;
     private int weight;
     private int awake; 
-    private boolean alive;
+    private boolean alive = true;
+    private int stayedAwake;
 
     // empty constructors
     public Tamagochi(){}
@@ -20,7 +21,8 @@ public class Tamagochi{
         this.age = age;
         this.weight = weight;
         this.awake = awake;
-        this.alive = alive;
+        this.alive = true;
+        this.stayedAwake = 0;
     }
 
     // getters
@@ -41,44 +43,42 @@ public class Tamagochi{
     
     // WHISHES OF TAMAGOCHI
     // fell sleepy
-    public void fellSleepy(){
+    public void fellSleepy(){ // needs implements the verification of age
         
         Scanner scanner = new Scanner(System.in);
-        
-        int stayedAwake = 0; // times of stayed awake
 
         System.out.println("Your pet " + getName() + " is sleepy. Age: " + getAge() + " days. Choose:");
         System.out.println("1. Sleep\n2. Stay awake");
 
         int choiceSleep = scanner.nextInt();
 
-        while(this.alive == true){
-            switch (choiceSleep) {
-                case 1: // user chose to sleep
-                    this.age = this.getAge() + 1; // add 1 day in age
-                    System.out.println("Your pet is days old: " + getAge());                
-                    break;
-            
-                case 2: // user chose to stay awake (limit 5 times)
-                    if (stayedAwake < 5) {
-                        stayedAwake += 1;
-                        System.out.println("Your pet has already been awake " + stayedAwake + " times. The limit is 5 times.");;
-                    }
-                    break;
-    
-                default:
-                    System.out.println("Please choose the number 1 or 2.");
-                    break;
-            }
+        switch (choiceSleep) {
+            case 1: // user chose to sleep
+                this.age++; // add 1 day in age
+                System.out.println("Your pet is days old: " + this.age);                
+                break;
+        
+            case 2: // user chose to stay awake (limit 5 times)
+                if (this.stayedAwake < 5) {
+                    this.stayedAwake++;
+                    System.out.println("Your pet has already been awake " + this.stayedAwake + " times. The limit is 5 times.");;
+                }else{
+                    System.out.println("Too tired to stay awake again.");
+                }        
+                break;
 
-            if(this.age > 15){
-                this.alive = false;
-                System.out.println("Your pet is dead!");
-            }
+            default:
+                System.out.println("Please choose the number 1 or 2.");
+                this.fellSleepy();
+                break;
+        }
+        if (this.age >= 15) {
+            this.alive = false;
+            System.out.println("Dead");
         }
         
-
-         scanner.close();    
+        
+        scanner.close();    
     }
 
     // fell hungry

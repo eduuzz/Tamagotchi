@@ -7,20 +7,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Tamagochi t1 = new Tamagochi();
 
-        System.out.println("Name of your pet: "); // user given name
+        System.out.print("Name of your pet: "); // user given name
         t1.setName(scanner.nextLine()); 
         t1.setWeight(1); // predefined weight
-        t1.setAge(0); // predefined age
-
-
+        t1.setAge(14); // predefined age
         
-        // System.out.println("Name: " + t1.getName() + ", weight: " + t1.getWeight() + ", age: " + t1.getAge());
-        
+
         t1.fellSleepy();
+    
         
-
         scanner.close();
-
-
     }
 }
