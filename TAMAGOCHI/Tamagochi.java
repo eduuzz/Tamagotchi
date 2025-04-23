@@ -45,13 +45,40 @@ public class Tamagochi{
         
         Scanner scanner = new Scanner(System.in);
         
-        int stayedAwake = 0;
-    
+        int stayedAwake = 0; // times of stayed awake
+
+        System.out.println("Your pet " + getName() + " is sleepy. Age: " + getAge() + " days. Choose:");
+        System.out.println("1. Sleep\n2. Stay awake");
+
         int choiceSleep = scanner.nextInt();
-        System.out.println(choiceSleep);
+
+        while(this.alive == true){
+            switch (choiceSleep) {
+                case 1: // user chose to sleep
+                    this.age = this.getAge() + 1; // add 1 day in age
+                    System.out.println("Your pet is days old: " + getAge());                
+                    break;
+            
+                case 2: // user chose to stay awake (limit 5 times)
+                    if (stayedAwake < 5) {
+                        stayedAwake += 1;
+                        System.out.println("Your pet has already been awake " + stayedAwake + " times. The limit is 5 times.");;
+                    }
+                    break;
+    
+                default:
+                    System.out.println("Please choose the number 1 or 2.");
+                    break;
+            }
+
+            if(this.age > 15){
+                this.alive = false;
+                System.out.println("Your pet is dead!");
+            }
+        }
         
 
-        
+         scanner.close();    
     }
 
     // fell hungry
