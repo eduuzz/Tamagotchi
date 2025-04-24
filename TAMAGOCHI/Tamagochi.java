@@ -2,7 +2,6 @@ package TAMAGOCHI;
 import java.util.Scanner;
 
 public class Tamagochi{
-
     Scanner scanner;
     // atributes
     private String name;
@@ -25,7 +24,7 @@ public class Tamagochi{
         this.stayedAwake = 0;
     }
 
-    // getters
+    // getters and setters
     public String getName(){return this.name;} // return the name
     public void setName(String name){this.name = name;} // set the new name
 
@@ -44,7 +43,6 @@ public class Tamagochi{
     // WHISHES OF TAMAGOCHI
     // fell sleepy
     public void fellSleepy(){ // needs implements the verification of age
-        
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Your pet " + getName() + " is sleepy. Age: " + getAge() + " days. Choose:");
@@ -77,13 +75,12 @@ public class Tamagochi{
 
         if (this.age >= 15) {
             this.alive = false;
-            System.out.println("Dead");
+            this.deadMessage();
         }
     }
 
     // fell hungry
     public void fellHungry(){ // can eat a lot / eat a bit / dont eat
-        
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Your pet " +getName()+ " is hungry. Weight: " +getWeight()+ "Kg.");
@@ -115,33 +112,47 @@ public class Tamagochi{
             }
         }
 
-        if(this.weight > 20){
+        if(this.weight >= 20){
+            this.alive = false;
             System.out.println(this.getName() + " exploded of wheight.");
+            this.deadMessage();
+            
+        }else if(this.weight <= 0){
             this.alive = false;
-        }else if(this.weight == 0){
             System.out.println(this.getName() + " became malnourished and died");
-            this.alive = false;
+            this.deadMessage();
         }
     }
 
     // felget bored
     public void getBored(){ // can run 10 minutes / can walk 10 minutes
-       
         Scanner scanner = new Scanner(System.in);
         
         System.out.println("Your pet " +getName()+ " is bored. Weight: " +getWeight()+ "Kg.");
-        System.out.println("Choose:\n1. Run 10 minutes (lose 4 of weight and eat a lot)\n2. Walk 10 minutes (lose 1 weight and gets hungry");
+        System.out.println("Choose:\n1. Run 10 minutes (lose 4 of weight and eat a lot)\n2. Walk 10 minutes (lose 1 weight and gets hungry)");
 
         int choiceGym = scanner.nextInt();
         
         switch (choiceGym) {
             case 1: // choice run
                 this.weight++; // get 1 of weight because lose 4 and eat 5
+                if(this.weight >= 20){
+                    this.alive = false;
+                    System.out.println(this.getName() + " exploded of wheight.");
+                    this.deadMessage();
+                    break;
+                }
                 System.out.println(this.getName() + " ran and ate a lot. Current weight: " +getWeight()+ "Kg.");
                 break;
             
             case 2: // choice walk
                 this.weight = getWeight() - 1; // only lose 1 of weight
+                if(this.weight <= 0){
+                    this.alive = false;
+                    System.out.println(this.getName() + " became malnourished and died");
+                    this.deadMessage();
+                    break;
+                }
                 System.out.println(this.getName()+ " walked and gets hungry.");
                 fellHungry();
                 break;
@@ -150,8 +161,7 @@ public class Tamagochi{
                 System.out.println("Please choose between the options 1 or 2."); // if not typed 1 or 2, return to ask 
                 this.getBored(); 
         }
-    } 
-
+    }
 
     public void deadMessage(){
         System.out.println("Oh no... " + this.getName() + " couldn't take it anymore and left for a better place...");
