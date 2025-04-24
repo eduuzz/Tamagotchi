@@ -52,61 +52,75 @@ public class Tamagochi{
 
         int choiceSleep = scanner.nextInt();
 
-        switch (choiceSleep) {
-            case 1: // user chose to sleep
-                this.age++; // add 1 day in age
-                System.out.println("Your pet is days old: " + this.age);                
-                break;
-        
-            case 2: // user chose to stay awake (limit 5 times)
-                if (this.stayedAwake < 5) {
-                    this.stayedAwake++;
-                    System.out.println("Your pet has already been awake " + this.stayedAwake + " times. The limit is 5 times.");;
-                }else{
-                    System.out.println("Too tired to stay awake again.");
-                }        
-                break;
+        if(this.alive == true){ // verify if pet is alive
+            switch (choiceSleep) {
+                case 1: // user chose to sleep
+                    this.age++; // add 1 day in age
+                    System.out.println("Your pet is days old: " + this.age);                
+                    break;
+            
+                case 2: // user chose to stay awake (limit 5 times)
+                    if (this.stayedAwake <= 5) {
+                        this.stayedAwake++;
+                        System.out.println("Your pet has already been awake " + this.stayedAwake + " times. The limit is 5 times.");;
+                    }else{
+                        System.out.println("Too tired to stay awake again.");
+                    }        
+                    break;
 
-            default:
-                System.out.println("Please choose the number 1 or 2.");
-                this.fellSleepy();
-                break;
+                default:
+                    System.out.println("Please choose between the options 1 or 2.");
+                    this.fellSleepy();
+                    break;
+            }
         }
+
         if (this.age >= 15) {
             this.alive = false;
             System.out.println("Dead");
         }
-        
-        
-        scanner.close();    
     }
 
     // fell hungry
     public void fellHungry(){ // can eat a lot / eat a bit / dont eat
         
         Scanner scanner = new Scanner(System.in);
-        int choiceHungry = scanner.nextInt();
         
         System.out.println("Your pet " +getName()+ " is hungry. Weight: " +getWeight()+ "Kg.");
         System.out.println("Choose: \n1. Eat a lot\n2. Eat a bit\n3. Don't eat");
+        	
+        int choiceHungry = scanner.nextInt();
 
-        switch (choiceHungry) {
-            case 1: // eat a lot and sleep
-                this.weight = this.weight + 5;
-                System.out.println(this.getName() + " ate and went sleep");
-                this.fellSleepy();
-                break;
-        
-            case 2: // eat a bit
-                this.weight++;
-                break;
-
-            case 3: // don't eat
-                this.weight = this.weight - 2;
-                break;
+        if(this.alive == true){
+            switch (choiceHungry) {
+                case 1: // eat a lot and sleep
+                    this.weight = this.weight + 5;
+                    System.out.println(this.getName() + " ate and went sleep. Current weight: " + this.getWeight() + "Kg.");
+                    this.fellSleepy();
+                    break;
             
-            default:
-                break;
+                case 2: // eat a bit
+                    this.weight++;
+                    System.out.println(this.getName() + " ate a bit, current weight: " + this.getWeight() + "Kg.");
+                    break;
+
+                case 3: // don't eat
+                    this.weight = this.weight - 2;
+                    System.out.println(this.getName() + " didn't eat, current wheght: " + this.getWeight() + "Kg.");
+                    break;
+                
+                default:
+                    this.fellHungry();
+                    break;
+            }
+        }
+
+        if(this.weight > 20){
+            System.out.println(this.getName() + " exploded of wheight.");
+            this.alive = false;
+        }else if(this.weight == 0){
+            System.out.println(this.getName() + " became malnourished and died");
+            this.alive = false;
         }
     }
 
@@ -122,7 +136,7 @@ public class Tamagochi{
         
         switch (choiceGym) {
             case 1: // choice run
-                this.weight = this.getWeight() + 1; // get 1 of weight because lose 4 and eat 5
+                this.weight++; // get 1 of weight because lose 4 and eat 5
                 System.out.println(this.getName() + " ran and ate a lot. Current weight: " +getWeight()+ "Kg.");
                 break;
             
@@ -134,14 +148,10 @@ public class Tamagochi{
 
             default:
                 System.out.println("Please choose between the options 1 or 2."); // if not typed 1 or 2, return to ask 
-                // verify how to return to ask 
-
-            scanner.close();
+                this.getBored(); 
         }
             
     } 
-
-
 
     // toString for the class
     @Override

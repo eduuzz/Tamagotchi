@@ -12,8 +12,11 @@ public class Main {
         t1.setWeight(1); // predefined weight
         t1.setAge(14); // predefined age
         
-
         t1.fellSleepy();
+        t1.fellSleepy();
+        t1.fellSleepy();
+        t1.fellSleepy();
+        t1.fellHungry();
     
         
         scanner.close();
