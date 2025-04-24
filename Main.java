@@ -10,14 +10,10 @@ public class Main {
         System.out.print("Name of your pet: "); // user given name
         t1.setName(scanner.nextLine()); 
         t1.setWeight(1); // predefined weight
-        t1.setAge(14); // predefined age
+        t1.setAge(0); // predefined age
         
-        t1.fellSleepy();
-        t1.fellSleepy();
-        t1.fellSleepy();
-        t1.fellSleepy();
-        t1.fellHungry();
-    
+        // drawing numbers 
+        
         
         scanner.close();
     }

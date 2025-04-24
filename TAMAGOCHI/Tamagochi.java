@@ -150,8 +150,14 @@ public class Tamagochi{
                 System.out.println("Please choose between the options 1 or 2."); // if not typed 1 or 2, return to ask 
                 this.getBored(); 
         }
-            
     } 
+
+
+    public void deadMessage(){
+        System.out.println("Oh no... " + this.getName() + " couldn't take it anymore and left for a better place...");
+        System.out.println("May he rest in paece in Tamagotchi heaven.");
+        System.out.println("Thank you for taking care of him until the end");
+    }
 
     // toString for the class
     @Override
