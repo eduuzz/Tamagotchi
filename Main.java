@@ -26,9 +26,8 @@ public class Main {
                     t1.getBored();
                 }
             }
-            
         }
-        
+
         scanner.close();
-    }
+    }   
 }

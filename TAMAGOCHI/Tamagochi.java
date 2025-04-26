@@ -42,7 +42,7 @@ public class Tamagochi{
     
     // WHISHES OF TAMAGOCHI
     // fell sleepy
-    public void fellSleepy(){ // needs implements the verification of age
+    public void fellSleepy(){
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Your pet " + getName() + " is sleepy. Age: " + getAge() + " days. Choose:");
@@ -164,6 +164,7 @@ public class Tamagochi{
     }
 
     public void deadMessage(){
+        System.out.println();
         System.out.println("Oh no... " + this.getName() + " couldn't take it anymore and left for a better place...");
         System.out.println("May he rest in paece in Tamagotchi heaven.");
         System.out.println("Thank you for taking care of him until the end");
