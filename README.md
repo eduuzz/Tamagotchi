@@ -1,4 +1,5 @@
-* MADE IN JAVA *
+* MADE IN JAVA
+  
 Tamagotchi is a japanese toy.
 
 Tamagotchi is your virtual pet. You need put a name and take care of him, need decides what to do with his wishes.
